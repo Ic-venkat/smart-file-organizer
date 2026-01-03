@@ -5,13 +5,12 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"smart-organizer/internal/config"
 )
 
-// Config maps folder names to a list of file extensions
-type Config map[string][]string
-
 // Organize scans the source directory and moves files based on the config
-func Organize(sourceDir string, config Config) error {
+func Organize(sourceDir string, config config.Config) error {
 	// Create a reverse map for faster lookup: extension -> folder
 	extToFolder := make(map[string]string)
 	for folder, exts := range config {
